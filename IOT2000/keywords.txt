@@ -1,0 +1,8 @@
+IOT2000	KEYWORD1
+USER_LED	LITERAL1
+userLEDSketchRunning	KEYWORD2
+activateUserButton	KEYWORD2
+readUserButton	KEYWORD2
+EthernetClientIOT	KEYWORD1
+standardHttpResponseHeader	KEYWORD2
+loadHTML	KEYWORD2
