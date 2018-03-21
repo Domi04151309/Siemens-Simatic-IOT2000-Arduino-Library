@@ -34,6 +34,18 @@
 
 #define USER_LED 13
 
+#define DI0 12
+#define DI1 11
+#define DI2 10
+#define DI3 9
+#define DI4 4
+#define DQ0 8
+#define DQ1 7
+#define U0 A0
+#define I0 A1
+#define U1 A2
+#define I1 A3
+
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EthernetUdp.h>  
@@ -50,6 +62,16 @@ public:
 	void loadHTML(char* location,EthernetClient client);
 private:
 	char z;
+};
+
+class getRequest{
+public:
+	getRequest();
+	void getString(char c);
+	bool checkString(char* y);
+	void resetString();
+private:
+	String inputString;
 };
 
 #endif

@@ -69,15 +69,33 @@ void EthernetClientIOT::loadHTML(char* location,EthernetClient client){
 	std::ifstream infile;
 	infile.open(location);
 	if(!infile){
-		Serial.println("Can't open file!");
+		client.println("Can't open file!");
 	}else{
-		Serial.println("Opened file!");
 		while(infile.get(z)){
 			client.print(z); 
 		}
 		if(z==infile.eof()){
-			Serial.println("Loaded file!");
 			infile.close();
 		}
 	}	
+}
+
+getRequest::getRequest(){}
+
+void getRequest::getString(char c){
+	if (inputString.length() < 100) {
+    inputString += c;
+	}
+}
+
+bool getRequest::checkString(char* y){
+	if(inputString.indexOf(y) > 0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+void getRequest::resetString(){
+	inputString="";
 }

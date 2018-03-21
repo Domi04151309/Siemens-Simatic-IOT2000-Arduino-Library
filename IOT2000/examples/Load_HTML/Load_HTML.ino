@@ -21,7 +21,7 @@ EthernetServer server(80);
 
 void setup() {
   userLEDSketchRunning();
-  //Open serial communications and wait for port to open
+  //Open serial communications
   Serial.begin(9600);
 
   //Start the Ethernet connection and the server
