@@ -61,7 +61,15 @@ public:
 	void standardHttpResponseHeader(EthernetClient client);
 	void loadHTML(char* location,EthernetClient client);
 private:
-	char z;
+	char z[255];
+	void checkFunction(char input[],int number,EthernetClient client);
+	char numberChar[1];
+	bool checkFunction2(char input[],int len_text,char searched[],int len_search);
+	bool textFound;
+	int pos_search;
+  int pos_text;
+  int len_search;
+  int len_text;
 };
 
 class getRequest{

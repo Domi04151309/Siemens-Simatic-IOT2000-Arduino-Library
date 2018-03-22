@@ -71,19 +71,84 @@ void EthernetClientIOT::loadHTML(char* location,EthernetClient client){
 	if(!infile){
 		client.println("Can't open file!");
 	}else{
-		while(infile.get(z)){
-			client.print(z); 
+		while(infile.getline(z, 255)){
+			client.println(z); 
+			checkFunction(z,0,client);
 		}
-		if(z==infile.eof()){
-			infile.close();
-		}
+		infile.close();
 	}	
+}
+
+void EthernetClientIOT::checkFunction(char input[],int number,EthernetClient client){
+	if(checkFunction2(z,256,"digitalRead(0)",14)){
+		client.println(digitalRead(0));
+	}else if(checkFunction2(z,256,"digitalRead(1)",14)){
+		client.println(digitalRead(1));
+	}else if(checkFunction2(z,256,"digitalRead(2)",14)){
+		client.println(digitalRead(2));
+	}else if(checkFunction2(z,256,"digitalRead(3)",14)){
+		client.println(digitalRead(3));
+	}else if(checkFunction2(z,256,"digitalRead(4)",14)){
+		client.println(digitalRead(4));
+	}else if(checkFunction2(z,256,"digitalRead(5)",14)){
+		client.println(digitalRead(5));
+	}else if(checkFunction2(z,256,"digitalRead(6)",14)){
+		client.println(digitalRead(6));
+	}else if(checkFunction2(z,256,"digitalRead(7)",14)){
+		client.println(digitalRead(7));
+	}else if(checkFunction2(z,256,"digitalRead(8)",14)){
+		client.println(digitalRead(8));
+	}else if(checkFunction2(z,256,"digitalRead(9)",14)){
+		client.println(digitalRead(9));
+	}else if(checkFunction2(z,256,"digitalRead(10)",14)){
+		client.println(digitalRead(10));
+	}else if(checkFunction2(z,256,"digitalRead(11)",14)){
+		client.println(digitalRead(11));
+	}else if(checkFunction2(z,256,"digitalRead(12)",14)){
+		client.println(digitalRead(12));
+	}else if(checkFunction2(z,256,"digitalRead(13)",14)){
+		client.println(digitalRead(13));
+	}else if(checkFunction2(z,256,"analogRead(A0)",14)){
+		client.println(analogRead(A0));
+	}else if(checkFunction2(z,256,"analogRead(A1)",14)){
+		client.println(analogRead(A1));
+	}else if(checkFunction2(z,256,"analogRead(A2)",14)){
+		client.println(analogRead(A2));
+	}else if(checkFunction2(z,256,"analogRead(A3)",14)){
+		client.println(analogRead(A3));
+	}else if(checkFunction2(z,256,"analogRead(A4)",14)){
+		client.println(analogRead(A4));
+	}else if(checkFunction2(z,256,"analogRead(A5)",14)){
+		client.println(analogRead(A5));
+	}
+}
+
+bool EthernetClientIOT::checkFunction2(char input[],int len_text,char searched[],int len_search){
+	textFound=false;
+	pos_search=0;
+  pos_text=0;
+  for (pos_text = 0; pos_text < len_text - len_search;++pos_text){
+    if(input[pos_text] == searched[pos_search]){
+      ++pos_search;
+      if(pos_search == len_search){
+				textFound=true;
+				return true;
+      }
+    }
+    else{
+      pos_text -=pos_search;
+      pos_search = 0;
+    }
+  }
+	if(!textFound){
+		return false;
+	}
 }
 
 getRequest::getRequest(){}
 
 void getRequest::getString(char c){
-	if (inputString.length() < 100) {
+	if (inputString.length() < 100){
     inputString += c;
 	}
 }
