@@ -1,5 +1,5 @@
 /*
- *IOT2000 - Library for the Siemens Symantic IOT2000
+ *IOT2000 - Library for the Siemens Simatic IOT2000
  *
  *Copyright 2018 Dominik Reichl
  *
@@ -73,13 +73,13 @@ void EthernetClientIOT::loadHTML(char* location,EthernetClient client){
 	}else{
 		while(infile.getline(z, 255)){
 			client.println(z); 
-			checkFunction(z,0,client);
+			checkFunction(client);
 		}
 		infile.close();
 	}	
 }
 
-void EthernetClientIOT::checkFunction(char input[],int number,EthernetClient client){
+void EthernetClientIOT::checkFunction(EthernetClient client){
 	if(checkFunction2(z,256,"digitalRead(0)",14)){
 		client.println(digitalRead(0));
 	}else if(checkFunction2(z,256,"digitalRead(1)",14)){
@@ -100,13 +100,13 @@ void EthernetClientIOT::checkFunction(char input[],int number,EthernetClient cli
 		client.println(digitalRead(8));
 	}else if(checkFunction2(z,256,"digitalRead(9)",14)){
 		client.println(digitalRead(9));
-	}else if(checkFunction2(z,256,"digitalRead(10)",14)){
+	}else if(checkFunction2(z,256,"digitalRead(10)",15)){
 		client.println(digitalRead(10));
-	}else if(checkFunction2(z,256,"digitalRead(11)",14)){
+	}else if(checkFunction2(z,256,"digitalRead(11)",15)){
 		client.println(digitalRead(11));
-	}else if(checkFunction2(z,256,"digitalRead(12)",14)){
+	}else if(checkFunction2(z,256,"digitalRead(12)",15)){
 		client.println(digitalRead(12));
-	}else if(checkFunction2(z,256,"digitalRead(13)",14)){
+	}else if(checkFunction2(z,256,"digitalRead(13)",15)){
 		client.println(digitalRead(13));
 	}else if(checkFunction2(z,256,"analogRead(A0)",14)){
 		client.println(analogRead(A0));
@@ -134,8 +134,7 @@ bool EthernetClientIOT::checkFunction2(char input[],int len_text,char searched[]
 				textFound=true;
 				return true;
       }
-    }
-    else{
+    }else{
       pos_text -=pos_search;
       pos_search = 0;
     }

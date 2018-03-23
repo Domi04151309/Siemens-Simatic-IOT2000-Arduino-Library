@@ -1,5 +1,5 @@
 /*
- *IOT2000 - Library for the Siemens Symantic IOT2000
+ *IOT2000 - Library for the Siemens Simatic IOT2000
  *
  *Copyright 2018 Dominik Reichl
  *
@@ -62,14 +62,11 @@ public:
 	void loadHTML(char* location,EthernetClient client);
 private:
 	char z[255];
-	void checkFunction(char input[],int number,EthernetClient client);
-	char numberChar[1];
+	void checkFunction(EthernetClient client);
 	bool checkFunction2(char input[],int len_text,char searched[],int len_search);
 	bool textFound;
 	int pos_search;
   int pos_text;
-  int len_search;
-  int len_text;
 };
 
 class getRequest{

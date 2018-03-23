@@ -1,7 +1,7 @@
 /*
- * Simple Web Server
+ * Simple Web Server with GET Requests
  *
- * A simple web server on your IOT2000
+ * A simple web server controllable with the URL on your IOT2000
  *
  * Created by Dominik Reichl
  */
@@ -18,6 +18,7 @@ IPAddress ip(192,168,200,1);
 //(port 80 is default for HTTP)
 EthernetClientIOT ECIOT;
 EthernetServer server(80);
+getRequest gr;
 
 void setup() {
   userLEDSketchRunning();
@@ -42,6 +43,8 @@ void loop() {
       if (client.available()) {
         char c = client.read();
         Serial.write(c);
+				//Get the string
+        gr.getString(c);
         
         //If you've gotten to the end of the line (received a newline
         //character) and the line is blank, the http request has ended,
@@ -70,6 +73,18 @@ void loop() {
     client.stop();
     Serial.println("Client disonnected");
     Serial.println();
+		
+		//Check for string
+		if(gr.checkString("?on")){
+        digitalWrite(13, HIGH);
+        Serial.println("Led On");
+    }
+    if(gr.checkString("?off")){
+        digitalWrite(13, LOW);
+        Serial.println("Led Off");
+    }
+		//Clear string for next read
+    gr.resetString();
   }
 }
 
