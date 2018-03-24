@@ -46,37 +46,11 @@
 #define U1 A2
 #define I1 A3
 
-#include <SPI.h>
-#include <Ethernet.h>
-#include <EthernetUdp.h>  
+#include <EthernetClientIOT.h>
+#include <getRequest.h>
 
 extern void userLEDSketchRunning();
 extern void activateUserButton();
 extern bool readUserButton();
-
-class EthernetClientIOT{
-friend class EthernetClient;
-public:
-	EthernetClientIOT();
-	void standardHttpResponseHeader(EthernetClient client);
-	void loadHTML(char* location,EthernetClient client);
-private:
-	char z[255];
-	void checkFunction(EthernetClient client);
-	bool checkFunction2(char input[],int len_text,char searched[],int len_search);
-	bool textFound;
-	int pos_search;
-  int pos_text;
-};
-
-class getRequest{
-public:
-	getRequest();
-	void getString(char c);
-	bool checkString(char* y);
-	void resetString();
-private:
-	String inputString;
-};
 
 #endif
