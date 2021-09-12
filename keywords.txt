@@ -14,10 +14,3 @@ I1	LITERAL1
 userLEDSketchRunning	KEYWORD2
 activateUserButton	KEYWORD2
 readUserButton	KEYWORD2
-EthernetClientIOT	KEYWORD1
-standardHttpResponseHeader	KEYWORD2
-loadHTML	KEYWORD2
-getRequest	KEYWORD1
-getString	KEYWORD2
-checkString	KEYWORD2
-resetString	KEYWORD2

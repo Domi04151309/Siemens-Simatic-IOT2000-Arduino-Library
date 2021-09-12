@@ -7,28 +7,28 @@
  */
 #include <IOT2000.h>
 
-int blinkTime=1000;
+int blinkDelay = 1000;
 
 void setup() {
-  pinMode(USER_LED,OUTPUT);
-  digitalWrite(USER_LED,HIGH);
-	//Makes USER button usable
+  pinMode(USER_LED, OUTPUT);
+  digitalWrite(USER_LED, HIGH);
+	//Makes the USER button usable
   activateUserButton();
 }
 
 void loop() {
 	//Does something when the button is pressed
-  if(!readUserButton()){
-    digitalWrite(USER_LED,LOW);
-    delay(blinkTime);
-    digitalWrite(USER_LED,HIGH);
-    delay(blinkTime);
-    digitalWrite(USER_LED,LOW);
-    delay(blinkTime);
-    digitalWrite(USER_LED,HIGH);
-    delay(blinkTime);
-    digitalWrite(USER_LED,LOW);
-    delay(blinkTime);
-    digitalWrite(USER_LED,HIGH);
+  if (!readUserButton()) {
+    digitalWrite(USER_LED, LOW);
+    delay(blinkDelay);
+    digitalWrite(USER_LED, HIGH);
+    delay(blinkDelay);
+    digitalWrite(USER_LED, LOW);
+    delay(blinkDelay);
+    digitalWrite(USER_LED, HIGH);
+    delay(blinkDelay);
+    digitalWrite(USER_LED, LOW);
+    delay(blinkDelay);
+    digitalWrite(USER_LED, HIGH);
   }
 }

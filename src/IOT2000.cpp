@@ -36,8 +36,8 @@
 #include <fstream>
 
 void userLEDSketchRunning(){
-  pinMode(USER_LED,OUTPUT);
-  digitalWrite(USER_LED,HIGH);
+  pinMode(USER_LED, OUTPUT);
+  digitalWrite(USER_LED, HIGH);
 }
 
 void activateUserButton(){

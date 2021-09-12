@@ -28,7 +28,7 @@
  *invalidate any other reasons why the executable file might be covered by
  *the GNU General Public License.
  */
- 
+
 #ifndef IOT2000_h
 #define IOT2000_h
 
@@ -45,9 +45,6 @@
 #define I0 A1
 #define U1 A2
 #define I1 A3
-
-#include <EthernetClientIOT.h>
-#include <getRequest.h>
 
 extern void userLEDSketchRunning();
 extern void activateUserButton();
